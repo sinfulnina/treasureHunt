@@ -16,15 +16,10 @@ def run_query(query):
 sheet_url = st.secrets["public_gsheets_url"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-# Print results test
-#for row in rows:
- #   st.write(f"{row.answer} has a :{row.clue}:")
-
-
 st.title("SinFul ArtIFicIal InteLLiGenCe")
 st.text("Welcome to my game, good luck trying to stop me..")
 # Answer and clue output
-answers = st.text_input("Answer", placeholder="what have you got for me?", help="Enter in the right answer, and your next clue will appear.")
+answers = st.text_input("Answer", placeholder="what have you got for me?", help="Enter in the right answer, and your next clue will appear.").lower()
 if st.button("Submit"):
     for row in rows:
         if answers in row:
